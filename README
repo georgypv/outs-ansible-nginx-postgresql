@@ -9,3 +9,5 @@ When you are sure that everything is correct, run the same command without `--ch
 
 `ansible-playbook -i inventory.yaml playbook.yaml`
 
+
+The playbook installs nginx and postgres (with additional dependencies) via apt, psycopg2 via pip and creates a user, a sample database and an empty table in Postgres.
