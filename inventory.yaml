@@ -1,0 +1,7 @@
+---
+otusvms:
+ hosts:
+  vm01:
+   ansible_host: 51.250.81.243
+  vm02:
+   ansible_host: 51.250.68.166

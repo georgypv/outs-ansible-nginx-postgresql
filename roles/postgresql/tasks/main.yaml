@@ -1,0 +1,48 @@
+---
+- name: Install postgresql
+  apt:
+   update_cache: yes
+   pkg:
+    - postgresql
+    - postgresql-contrib
+    - python3-pip
+    - libpq-dev
+    - acl
+
+- name: Install psycopg2 with pip
+  pip:
+   name: psycopg2
+
+- name: Start postgres
+  service:
+   name: postgresql
+   enabled: yes
+   state: started
+
+- name: Create postres DB
+  become: true
+  become_user: postgres
+  postgresql_db:
+   name: "{{ db_name_pg }}"
+   encoding: UTF-8
+
+- name: Create postgres table
+  become: true
+  become_user: postgres
+  postgresql_table:
+   name: "{{ table_name_pg }}"
+   db: "{{ db_name_pg }}"
+   columns:
+    - id bigserial primary key
+    - order_dt timestamp
+    - product_name varchar(200)
+
+- name: Create postgres user
+  become: true
+  become_user: postgres
+  postgresql_user:
+   db: company_x
+   name: "{{ user_name_pg }}"
+   password: "{{ user_password_pg }}"
+   priv: "CONNECT/orders:ALL"
+   expires: infinity

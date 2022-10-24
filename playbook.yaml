@@ -1,0 +1,8 @@
+---
+- name: setup-nginx-and-db
+  hosts: otusvms
+  remote_user: ubuntu
+  become: true
+  roles:
+    - nginx
+    - postgresql

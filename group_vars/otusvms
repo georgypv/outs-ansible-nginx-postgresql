@@ -1,0 +1,7 @@
+nginx_port: 80
+server_hostname: server.example.com
+
+user_name_pg: user_1
+user_password_pg: secret
+db_name_pg: company_x
+table_name_pg: orders
