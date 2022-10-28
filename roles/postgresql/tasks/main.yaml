@@ -39,9 +39,10 @@
 
 - name: Create postgres user
   become: true
+  no_log: true
   become_user: postgres
   postgresql_user:
-   db: company_x
+   db: "{{ db_name_pg }}"
    name: "{{ user_name_pg }}"
    password: "{{ user_password_pg }}"
    priv: "CONNECT/orders:ALL"
