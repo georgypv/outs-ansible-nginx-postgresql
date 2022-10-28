@@ -8,6 +8,8 @@ Modify, if needed, the contents of ansible.cfg file which contains following def
  - host_key_checking = whether to ask for permission before connection
  - DEFAULT_VAULT_PASSWORD_FILE = file with ansible-vault password which is needed to decrypt secret variables
 
+Variables which contain sensitive information like `user_name_pg` and `user_password_pg` are hidden with `ansible-vault encrypt_string` command. Password for encryption-decryption of these variables should be written into a file which is indicated with DEFAULT_VALUT_PASSWORD_FILE variable in `group_vars/otusvms`.
+
 To make a 'dry run' of the playbook, use the command: `ansible-playbook playbook.yaml --check`
 
 When you are sure that everything is correct, run the same command without `--check` flag:
